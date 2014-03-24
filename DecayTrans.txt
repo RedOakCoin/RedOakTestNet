@@ -1,0 +1,141 @@
+C:\%ROCMACHINE\%ROC-Master\Root\src\>redoakcoin getinfo
+{
+    "version" : 60300,
+    "protocolversion" : 60001,
+    "walletversion" : 60000,
+    "balance" : 230278.15000000,
+    "blocks" : 1874,
+    "connections" : 1,
+    "proxy" : "",
+    "difficulty" : 0.00390625,
+    "testnet" : true,
+    "keypoololdest" : 1395635443,
+    "keypoolsize" : 101,
+    "paytxfee" : 0.00000000,
+    "mininput" : 0.00010000,
+    "errors" : ""
+}
+
+C:\%ROCMACHINE\%ROC-Master\Root\src\>redoakcoin listtransactions
+[
+    {
+        "account" : "",
+        "category" : "immature",
+        "amount" : 114.99715632,
+        "confirmations" : 10,
+        "blockhash" : "d83ce589ec36f3d209524c6a5f875daa4e8e60534bf51b86721c20720
+1fc13ca",
+        "blockindex" : 0,
+        "txid" : "91236a75378ec062ad073ccc24568ce6e6d9374431857e6b6ab231f932fd50
+33",
+        "time" : 1395639051
+    },
+    {
+        "account" : "",
+        "category" : "immature",
+        "amount" : 114.99696675,
+        "confirmations" : 9,
+        "blockhash" : "4a07ab96f2670114cc80dd777d3540d2896a74cbffd651d88333e6c66
+cc63c08",
+        "blockindex" : 0,
+        "txid" : "cdd52571c9ea582a8a91e7c722d858ede55eee4c208689c399fbfe2c7eceba
+96",
+        "time" : 1395639134
+    },
+    {
+        "account" : "",
+        "category" : "immature",
+        "amount" : 114.99677718,
+        "confirmations" : 8,
+        "blockhash" : "2baff69d56b74b53b995e35cdc12bc31b24ba64b8d28eda8dd290c021
+97d4a1b",
+        "blockindex" : 0,
+        "txid" : "80f30ff3c9fc7a43dff5732a99172350a9a5f207a72e92c7b084d4d50ca7a0
+ad",
+        "time" : 1395639158
+    },
+    {
+        "account" : "",
+        "category" : "immature",
+        "amount" : 114.99658761,
+        "confirmations" : 7,
+        "blockhash" : "e09a35f25b772441c5f901d532afd9f14b68567877147feaeccf630e9
+02e0768",
+        "blockindex" : 0,
+        "txid" : "8aaa66294440ee08b63e2fa2eed5ac5cfe0a24f0319199d566c4155c4fdde2
+e4",
+        "time" : 1395639181
+    },
+    {
+        "account" : "",
+        "category" : "immature",
+        "amount" : 114.99639804,
+        "confirmations" : 6,
+        "blockhash" : "0c1d1aba262632cff9e6d41c6c857d6f9d4ee422c3a554d7448f09162
+d6c8dcd",
+        "blockindex" : 0,
+        "txid" : "3057a2b14d6306ec1d87f55b66526ee0936e73fd9c19a8f056d012d754a3b1
+bf",
+        "time" : 1395639183
+    },
+    {
+        "account" : "",
+        "category" : "immature",
+        "amount" : 114.99620847,
+        "confirmations" : 5,
+        "blockhash" : "c7e9c1b26552887cb561d47077025d9958ca0c9f5d38fa7f09ac7bc2b
+a786ad2",
+        "blockindex" : 0,
+        "txid" : "fce66ce49bc6ffb0bdd0ec144e88bb1828cac44236960e92c2cef3ac0ddd5e
+43",
+        "time" : 1395639217
+    },
+    {
+        "account" : "",
+        "category" : "immature",
+        "amount" : 114.99601890,
+        "confirmations" : 4,
+        "blockhash" : "05a80f5f0efb35b85b9d9631c181db0362270667deda7c09f9dc67d20
+90755b8",
+        "blockindex" : 0,
+        "txid" : "99a966ff29cb33e8ac9fbbba61dfa0e8340908aff9291eb5330c32b316e830
+97",
+        "time" : 1395639219
+    },
+    {
+        "account" : "",
+        "category" : "immature",
+        "amount" : 114.99582933,
+        "confirmations" : 3,
+        "blockhash" : "2c6fcf1ee35c5f41b3ccb3a6abbd0ac9aa9cabd045cf27ce8b6da2adb
+bc2c7e9",
+        "blockindex" : 0,
+        "txid" : "da19d6362c097a0c959ceb2148c80ad2614178bd60dd0cc9e4b5388d16f1ec
+2f",
+        "time" : 1395639252
+    },
+    {
+        "account" : "",
+        "category" : "immature",
+        "amount" : 114.99563976,
+        "confirmations" : 2,
+        "blockhash" : "8c71dcb295b064117fe68a9d01de9bc9ca2dde44aa71ea4ca5d3aaef0
+c11c37b",
+        "blockindex" : 0,
+        "txid" : "8437eb01bb2aa39092675059ba5b2d3d57f7b43931c44894f809a9405be0cf
+d3",
+        "time" : 1395639262
+    },
+    {
+        "account" : "",
+        "category" : "immature",
+        "amount" : 114.99545019,
+        "confirmations" : 1,
+        "blockhash" : "dec2a920e7084426bb3bdc53ff18995d4627297d5d73c96a0a6830d72
+465492d",
+        "blockindex" : 0,
+        "txid" : "0772b0c4920fbba203ffbd82e1aea701adea27dee6576585ffccf6d8ce7f1d
+37",
+        "time" : 1395639301
+    }
+]
