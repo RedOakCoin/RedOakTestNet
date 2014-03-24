@@ -2,6 +2,8 @@ Notes: After pushing our Decay Target up to 1900 (From 17K) we now have an opera
 Notice: Please note the <b>Bold</b> text for the change in Subsidy*Coin Value
 Running 0.00016% Decay per Block
 
+//Edit: OverEstimated GitHub's ability to allow html will remove tags tomorrow
+
 C:\%ROCMACHINE\%ROC-Master\Root\src\><b>redoakcoin getinfo</b>
 {
     "version" : 60300,
