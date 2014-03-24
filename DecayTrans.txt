@@ -1,4 +1,8 @@
-C:\%ROCMACHINE\%ROC-Master\Root\src\>redoakcoin getinfo
+Notes: After pushing our Decay Target up to 1900 (From 17K) we now have an operating Subsidy Decay Function. Local TestNet will keep hashing so we can obtain a control for Difficulty estimations.
+Notice: Please note the <b>Bold</b> text for the change in Subsidy*Coin Value
+Running 0.00016% Decay per Block
+
+C:\%ROCMACHINE\%ROC-Master\Root\src\><b>redoakcoin getinfo</b>
 {
     "version" : 60300,
     "protocolversion" : 60001,
@@ -16,12 +20,12 @@ C:\%ROCMACHINE\%ROC-Master\Root\src\>redoakcoin getinfo
     "errors" : ""
 }
 
-C:\%ROCMACHINE\%ROC-Master\Root\src\>redoakcoin listtransactions
+C:\%ROCMACHINE\%ROC-Master\Root\src\><b>redoakcoin listtransactions</b>
 [
     {
         "account" : "",
         "category" : "immature",
-        "amount" : 114.99715632,
+        <b>"amount" : 114.99715632,</b>
         "confirmations" : 10,
         "blockhash" : "d83ce589ec36f3d209524c6a5f875daa4e8e60534bf51b86721c20720
 1fc13ca",
@@ -33,7 +37,7 @@ C:\%ROCMACHINE\%ROC-Master\Root\src\>redoakcoin listtransactions
     {
         "account" : "",
         "category" : "immature",
-        "amount" : 114.99696675,
+        <b>"amount" : 114.99696675,</b>
         "confirmations" : 9,
         "blockhash" : "4a07ab96f2670114cc80dd777d3540d2896a74cbffd651d88333e6c66
 cc63c08",
@@ -45,7 +49,7 @@ cc63c08",
     {
         "account" : "",
         "category" : "immature",
-        "amount" : 114.99677718,
+        <b>"amount" : 114.99677718,</b>
         "confirmations" : 8,
         "blockhash" : "2baff69d56b74b53b995e35cdc12bc31b24ba64b8d28eda8dd290c021
 97d4a1b",
@@ -57,7 +61,7 @@ ad",
     {
         "account" : "",
         "category" : "immature",
-        "amount" : 114.99658761,
+       <b> "amount" : 114.99658761,</b>
         "confirmations" : 7,
         "blockhash" : "e09a35f25b772441c5f901d532afd9f14b68567877147feaeccf630e9
 02e0768",
@@ -69,7 +73,7 @@ e4",
     {
         "account" : "",
         "category" : "immature",
-        "amount" : 114.99639804,
+        <b>"amount" : 114.99639804,</b>
         "confirmations" : 6,
         "blockhash" : "0c1d1aba262632cff9e6d41c6c857d6f9d4ee422c3a554d7448f09162
 d6c8dcd",
@@ -81,7 +85,7 @@ bf",
     {
         "account" : "",
         "category" : "immature",
-        "amount" : 114.99620847,
+        <b>"amount" : 114.99620847,</b>
         "confirmations" : 5,
         "blockhash" : "c7e9c1b26552887cb561d47077025d9958ca0c9f5d38fa7f09ac7bc2b
 a786ad2",
@@ -93,7 +97,7 @@ a786ad2",
     {
         "account" : "",
         "category" : "immature",
-        "amount" : 114.99601890,
+        <b>"amount" : 114.99601890,</b>
         "confirmations" : 4,
         "blockhash" : "05a80f5f0efb35b85b9d9631c181db0362270667deda7c09f9dc67d20
 90755b8",
@@ -105,7 +109,7 @@ a786ad2",
     {
         "account" : "",
         "category" : "immature",
-        "amount" : 114.99582933,
+        <b>"amount" : 114.99582933,</b>
         "confirmations" : 3,
         "blockhash" : "2c6fcf1ee35c5f41b3ccb3a6abbd0ac9aa9cabd045cf27ce8b6da2adb
 bc2c7e9",
@@ -117,7 +121,7 @@ bc2c7e9",
     {
         "account" : "",
         "category" : "immature",
-        "amount" : 114.99563976,
+        <b>"amount" : 114.99563976,</b>
         "confirmations" : 2,
         "blockhash" : "8c71dcb295b064117fe68a9d01de9bc9ca2dde44aa71ea4ca5d3aaef0
 c11c37b",
@@ -129,7 +133,7 @@ d3",
     {
         "account" : "",
         "category" : "immature",
-        "amount" : 114.99545019,
+        <b>"amount" : 114.99545019,</b>
         "confirmations" : 1,
         "blockhash" : "dec2a920e7084426bb3bdc53ff18995d4627297d5d73c96a0a6830d72
 465492d",
