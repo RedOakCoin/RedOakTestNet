@@ -1,6 +1,12 @@
 RedOakTestNet<br>
 =============<br>
 <br>
+Status Update:<br>
+(3/24/14) 1:17am<br>
+- Decay's Math Is Spot On<br>
+- Pushing Starting Block Up From 17K to 1,900 to save time<br>
+- Forking One Wallet Off The TestNet Chain [Ensuring Ease Of Maintaining BlockChain for RealWorld Situations] <br><br>
+
 Running Tests On New Decay *Contains Win32 .Exe*<br>
 <br>
 Developer Notes:<br>
