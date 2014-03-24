@@ -29,7 +29,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x1ed988fdaad31f8ae53f1858b8470514b252b251d80778d0c1fce39c622dabeb");
+uint256 hashGenesisBlock("0x6adcecdcd60515adb68b33ce5abcd13386d221598323c597b358654cb4f6439b");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2032,14 +2032,23 @@ bool LoadBlockIndex(bool fAllowNew)
 //CTransaction(hash=2a8612126e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
 //CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d01044c88546865204d6f6f6e205068617365203d204f6c64204d6f6f6e2c204672616374696f6e206f6620746865204d6f6f6e3a20302e373239363330333431323833342c20496c6c756d696e6174696f6e206f6620746865204d6f6f6e204469736b3a2035362d50657263656e742c204d6f6f6e2064697374616e63653a203336373134312e3436206b6d)
 //CTxOut(nValue=0.00000073, scriptPubKey=0273148fd2634bfa69da0301828154)
-//vMerkleTree: 2a8612126e 
+    //vMerkleTree: 2a8612126e 
      //
+      // Genesis - March 24th 2014
+    // block.nTime = 1395704044 
+  //block.nNonce = 2089094081 
+//block.GetHash = 6adcecdcd60515adb68b33ce5abcd13386d221598323c597b358654cb4f6439b
+//CBlock(hash=6adcecdcd60515adb68b, PoW=000006a42819461fb720, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=2a8612126e, nTime=1395704044, nBits=1e0ffff0, nNonce=2089094081, vtx=1)
+//CTransaction(hash=2a8612126e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+//CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d01044c88546865204d6f6f6e205068617365203d204f6c64204d6f6f6e2c204672616374696f6e206f6620746865204d6f6f6e3a20302e373239363330333431323833342c20496c6c756d696e6174696f6e206f6620746865204d6f6f6e204469736b3a2035362d50657263656e742c204d6f6f6e2064697374616e63653a203336373134312e3436206b6d)
+//CTxOut(nValue=0.00000073, scriptPubKey=0273148fd2634bfa69da0301828154)
+  //vMerkleTree: 2a8612126e 
 	  //"We must "Be" before we can "Do," 
        //  and we can "Do" only to the extent which we "Are," 
         //  and what we "Are" depends upon what we "Think." - W.D.W
         //   From ~Orion To The World
         //
-        // Genesis block
+        // Genesis block - [http://lunaf.com/english/live-data/moon-phase/]
         const char* pszTimestamp = "The Moon Phase = Old Moon, Fraction of the Moon: 0.7296303412834, Illumination of the Moon Disk: 56-Percent, Moon distance: 367141.46 km";
         CTransaction txNew;
         txNew.vin.resize(1);
@@ -2052,9 +2061,9 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1395613187;
+        block.nTime    = 1395704044;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 2088962253;
+        block.nNonce   = 2089094081;
 
         if (fTestNet)
         {
@@ -2069,7 +2078,7 @@ bool LoadBlockIndex(bool fAllowNew)
         assert(block.hashMerkleRoot == uint256("0x2a8612126e1165d55731636b373d45895872d76c89489a9d2634c826af745e77"));
 
         // If genesis block hash does not match, then generate new genesis hash.
-        if (true&& block.GetHash() != hashGenesisBlock)
+        if (false&& block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
