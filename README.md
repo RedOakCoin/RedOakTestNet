@@ -1,17 +1,90 @@
-RedOakTestNet<br>
-=============<br>
-<br>
-Status Update:<br>
-(3/24/14) 1:17am<br>
-- Decay's Math Is Spot On<br>
-- Pushing Starting Block Up From 17K to 1,900 to save time<br>
-- Forking One Wallet Off The TestNet Chain [Ensuring Ease Of Maintaining BlockChain for RealWorld Situations] <br><br>
 
-Running Tests On New Decay *Contains Win32 .Exe*<br>
-<br>
-Developer Notes:<br>
-Run Only With '-testnet' or use the included .bat file in Release.Rar<br><br>
-To Connect: Contact me for the Alive-Node (Using '-connect=' or 'addnode=' will work)<br>
-To Configure GPU/Solo Mining follow standard mining protocols (ie: redoakcoin.conf w/ testnet ports - Point CG/BFG-Miner to 127.0.0.1)<br>
-We are watching and recording how the network reacts to our Decay Function<br>
-Send Bugs/Reports/Updates/Finds/etc., to Orion<br>
+
+RedOakCoin
+===========
+
+ROC Parameters
+
+ - 2.5 minute block targets
+ - 115 coins per block [Initial 129.53 * Coin Reward]
+ - 1.5 - Day Difficulty Adjustment
+ - Per-Block Subsidy Decay =- 0.00016%
+ 
+Official Wesbite and Downloads
+==============================
+
+https://www.redoakcoin.com/
+
+
+Litecoin integration/staging tree
+================================
+
+http://www.litecoin.org
+
+Copyright (c) 2009-2014 Bitcoin Developers
+Copyright (c) 2011-2014 Litecoin Developers
+
+What is Litecoin?
+----------------
+
+Litecoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
+ - 2.5 minute block targets
+ - subsidy halves in 840k blocks (~4 years)
+ - ~84 million total coins
+
+The rest is the same as Bitcoin.
+ - 50 coins per block
+ - 2016 blocks to retarget difficulty
+
+For more information, as well as an immediately useable, binary version of
+the Litecoin client sofware, see http://www.litecoin.org.
+
+License
+-------
+
+Litecoin is released under the terms of the MIT license. See `COPYING` for more
+information or see http://opensource.org/licenses/MIT.
+
+Development process
+-------------------
+
+Developers work in their own trees, then submit pull requests when they think
+their feature or bug fix is ready.
+
+If it is a simple/trivial/non-controversial change, then one of the Litecoin
+development team members simply pulls it.
+
+If it is a *more complicated or potentially controversial* change, then the patch
+submitter will be asked to start a discussion with the devs and community.
+
+The patch will be accepted if there is broad consensus that it is a good thing.
+Developers should expect to rework and resubmit patches if the code doesn't
+match the project's coding conventions (see `doc/coding.txt`) or are
+controversial.
+
+The `master` branch is regularly built and tested, but is not guaranteed to be
+completely stable. [Tags](https://github.com/litecoin-project/litecoin/tags) are created
+regularly to indicate new official, stable release versions of Litecoin.
+
+Testing
+-------
+
+Testing and code review is the bottleneck for development; we get more pull
+requests than we can review and test. Please be patient and help out, and
+remember this is a security-critical project where any mistake might cost people
+lots of money.
+
+### Automated Testing
+
+Developers are strongly encouraged to write unit tests for new code, and to
+submit new unit tests for old code.
+
+Unit tests for the core code are in `src/test/`. To compile and run them:
+
+    cd src; make -f makefile.unix test
+
+Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
+
+    qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
+    make -f Makefile.test
+    ./litecoin-qt_test

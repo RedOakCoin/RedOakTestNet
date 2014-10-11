@@ -1,6 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin Developers
-// Copyright (c) 2011-2012 redoakcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,16 +10,18 @@
 //      could be used to create visually identical looking account numbers.
 // - A string with non-alphanumeric characters is not as easily accepted as an account number.
 // - E-mail usually won't line-break if there's no punctuation to break at.
-// - Doubleclicking selects the whole number as one word if it's all alphanumeric.
+// - Double-clicking selects the whole number as one word if it's all alphanumeric.
 //
 #ifndef BITCOIN_BASE58_H
 #define BITCOIN_BASE58_H
 
 #include <string>
 #include <vector>
+
 #include "bignum.h"
 #include "key.h"
 #include "script.h"
+#include "allocators.h"
 
 static const char* pszBase58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 
@@ -179,19 +180,13 @@ protected:
     unsigned char nVersion;
 
     // the actually encoded data
-    std::vector<unsigned char> vchData;
+    typedef std::vector<unsigned char, zero_after_free_allocator<unsigned char> > vector_uchar;
+    vector_uchar vchData;
 
     CBase58Data()
     {
         nVersion = 0;
         vchData.clear();
-    }
-
-    ~CBase58Data()
-    {
-        // zero the memory, as it may contain sensitive data
-        if (!vchData.empty())
-            memset(&vchData[0], 0, vchData.size());
     }
 
     void SetData(int nVersionIn, const void* pdata, size_t nSize)
@@ -222,7 +217,7 @@ public:
         vchData.resize(vchTemp.size() - 1);
         if (!vchData.empty())
             memcpy(&vchData[0], &vchTemp[1], vchData.size());
-        memset(&vchTemp[0], 0, vchTemp.size());
+        OPENSSL_cleanse(&vchTemp[0], vchData.size());
         return true;
     }
 
@@ -255,7 +250,7 @@ public:
 };
 
 /** base58-encoded Bitcoin addresses.
- * Public-key-hash-addresses have version 0 (or 111 testnet).
+ * Public-key-hash-addresses have version 14 (or 65 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
  * Script-hash-addresses have version 5 (or 196 testnet).
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
@@ -277,9 +272,9 @@ class CBitcoinAddress : public CBase58Data
 public:
     enum
     {
-        PUBKEY_ADDRESS = 60, // addresses start with R
+        PUBKEY_ADDRESS = 60, // redoakcoin addresses start with 'R'
         SCRIPT_ADDRESS = 5,
-        PUBKEY_ADDRESS_TEST = 122, // testnet starts with r
+        PUBKEY_ADDRESS_TEST = 122, // TestNet starts with 'r'
         SCRIPT_ADDRESS_TEST = 196,
     };
 
@@ -409,21 +404,19 @@ public:
         PRIVKEY_ADDRESS_TEST = CBitcoinAddress::PUBKEY_ADDRESS_TEST + 128,
     };
 
-    void SetSecret(const CSecret& vchSecret, bool fCompressed)
-    { 
-        assert(vchSecret.size() == 32);
-        SetData(fTestNet ? PRIVKEY_ADDRESS_TEST : PRIVKEY_ADDRESS, &vchSecret[0], vchSecret.size());
-        if (fCompressed)
+    void SetKey(const CKey& vchSecret)
+    {
+        assert(vchSecret.IsValid());
+        SetData(fTestNet ? PRIVKEY_ADDRESS_TEST : PRIVKEY_ADDRESS, vchSecret.begin(), vchSecret.size());
+        if (vchSecret.IsCompressed())
             vchData.push_back(1);
     }
 
-    CSecret GetSecret(bool &fCompressedOut)
+    CKey GetKey()
     {
-        CSecret vchSecret;
-        vchSecret.resize(32);
-        memcpy(&vchSecret[0], &vchData[0], 32);
-        fCompressedOut = vchData.size() == 33;
-        return vchSecret;
+        CKey ret;
+        ret.Set(&vchData[0], &vchData[32], vchData.size() > 32 && vchData[32] == 1);
+        return ret;
     }
 
     bool IsValid() const
@@ -454,9 +447,9 @@ public:
         return SetString(strSecret.c_str());
     }
 
-    CBitcoinSecret(const CSecret& vchSecret, bool fCompressed)
+    CBitcoinSecret(const CKey& vchSecret)
     {
-        SetSecret(vchSecret, fCompressed);
+        SetKey(vchSecret);
     }
 
     CBitcoinSecret()
@@ -464,4 +457,4 @@ public:
     }
 };
 
-#endif
+#endif // BITCOIN_BASE58_H
