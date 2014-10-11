@@ -52,15 +52,15 @@ bool fBenchmark = false;
 bool fTxIndex = false;
 unsigned int nCoinCacheSize = 5000;
 
-// The 1st hard fork (KGW) @REM->DGW-3
+// The 1st hard fork (FTC)
 const int nForkAlpha = 33000;
-// The 2nd hard fork (KGW) @REM->DGW-3
+// The 2nd hard fork (FTC)
 const int nForkBeta = 87948;
-// The 3rd hard fork (KGW) @REM->DGW-3
+// The 3rd hard fork (FTC)
 const int nForkTheta = 204639;
-// The 4rd hard fork (ROC-Testing-KGW) @REM->DGW-3
+// The 4rd hard fork (ROC-Testing)
 const int nForkDelta = 904639;
-// Subsidy: Rolling ROC (ROC) @REM->DGW-3
+// Subsidy: Rolling ROC (ROC)
 static const int64 nDiffChangeTarget = 1280; //initiate 'Rolling Roc' @ //17280
 static const int64 patchBlockRewardDuration = 1; //per block decay
 
@@ -1360,21 +1360,6 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
 {
     unsigned int nProofOfWorkLimit = bnProofOfWorkLimit.GetCompact();
 
-    /* --DarkCoin Adj., Function Logic--
-     int DiffMode = 1;
-        
-        if (fTestNet) {
-            if (pindexLast->nHeight+1 >= 256) DiffMode = 3;
-        }
-        else {
-            if (pindexLast->nHeight+1 >= 34140) DiffMode = 3;
-            else if (pindexLast->nHeight+1 >= 15200) DiffMode = 2;
-        }
-
-        if (DiffMode == 1) { return GetNextWorkRequired_V1(pindexLast, pblock); }
-        else if (DiffMode == 2) { return GetNextWorkRequired_V2(pindexLast, pblock); }
-    */
-  
     // Genesis block
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
@@ -1382,28 +1367,19 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
     // The next block
     int nHeight = pindexLast->nHeight + 1;
 
-    if (nHeight < nForkAlpha)
-        return GetNextWorkRequired_V2(pindexLast, pblock);
 	if (nHeight >= nForkAlpha)
 		nTargetTimespan = (7 * 24 * 60 * 60) / 8; // 7/8 days
-        return GetNextWorkRequired_V2(pindexLast, pblock);
-        //return DarkGravityWave3(pindexLast, pblock);
 
     if (nHeight >= nForkBeta)
 		nTargetTimespan = (7 * 24 * 60 * 60) / 32; // 7/32 days
-        return GetNextWorkRequired_V2(pindexLast, pblock);
-        //return DarkGravityWave3(pindexLast, pblock);
 
 	if (nHeight >= nForkTheta)
         nTargetTimespan = (7 * 24 * 60 * 60) / 64; // 7/64 days
-        return GetNextWorkRequired_V2(pindexLast, pblock);
-        //return DarkGravityWave3(pindexLast, pblock);
 
     if (nHeight >= nForkDelta || fTestNet) {
         //nTargetTimespan = 1.5 * 24 * 60 * 60; // 1.5 days
         nTargetTimespan = 60; // 1.5 days
         nTargetSpacing = 15; // 5 sec block: RollingRoc FloodGates
-        //return DarkGravityWave3(pindexLast, pblock);
         return GetNextWorkRequired_V2(pindexLast, pblock);
 	}
 
